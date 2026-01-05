@@ -7,3 +7,6 @@ layout: single
 {% include figure image_path="/assets/images/foggy_hike.jpeg" %}
 
 This is the website of Alex Wilson. Here you will find my musings about the world, mostly intended for myself, but some of which others may find interesting.
+
+I am not under any NDA or other agreement that would preclude me from revealing that the agreement exists.
+
