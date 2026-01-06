@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+import Atmosphere from '../components/Atmosphere';
+import ThemeToggle from '../components/ThemeToggle';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Alex Wilson", description = "I think the meaning of life is to love and to be loved—and I'm curious about how to do both better." } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      (function() {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'night' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'night');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Atmospheric background effects -->
+    <Atmosphere client:load />
+
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="nav">
+        <a href="/" class="nav__brand">Alex</a>
+
+        <div class="nav__links">
+          <div class="nav__menu">
+            <a href="/writing" class:list={[{ active: currentPath.startsWith('/writing') }]}>Writing</a>
+            <a href="/about" class:list={[{ active: currentPath === '/about' || currentPath === '/about/' }]}>About</a>
+            <a href="/now" class:list={[{ active: currentPath === '/now' || currentPath === '/now/' }]}>Now</a>
+          </div>
+
+          <ThemeToggle client:load />
+        </div>
+      </nav>
+
+      <!-- Main content -->
+      <main>
+        <slot />
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <span>&copy; {new Date().getFullYear()}</span>
+        <span class="footer__message" id="footer-message">
+          Light finds its way
+        </span>
+      </footer>
+    </div>
+
+    <!-- Update footer message based on theme -->
+    <script is:inline>
+      function updateFooterMessage() {
+        const isNight = document.documentElement.getAttribute('data-theme') === 'night';
+        const msg = document.getElementById('footer-message');
+        if (msg) {
+          msg.innerHTML = isNight
+            ? '<span class="footer__star">✦</span> Built with curiosity'
+            : 'Light finds its way';
+        }
+      }
+
+      // Initial update
+      updateFooterMessage();
+
+      // Watch for theme changes
+      const observer = new MutationObserver(updateFooterMessage);
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+      });
+    </script>
+  </body>
+</html>

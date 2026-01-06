@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Helper to check if a post is a poem
+function isPoem(post: any) {
+  return post.data.categories?.includes('Poems') || post.data.tags?.includes('poem');
+}
+
+const poem = isPoem(post);
+
+// Format date
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout title={`${post.data.title} | Alex Wilson`} description={post.data.excerpt}>
+  <article class:list={['post', { 'post--poem': poem }]}>
+    <header>
+      <h1>{post.data.title}</h1>
+      <div class="post__meta">
+        <span class:list={['tag', { 'tag--poem': poem }]}>
+          {poem ? 'poem' : 'essay'}
+        </span>
+        <span>{formatDate(post.data.date)}</span>
+      </div>
+    </header>
+
+    <div class="post__content">
+      <Content />
+    </div>
+  </article>
+
+  <nav style="margin-top: var(--space-7);">
+    <a href="/writing" style="color: var(--color-accent);">← Back to all writing</a>
+  </nav>
+</BaseLayout>

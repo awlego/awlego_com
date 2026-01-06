@@ -1,4 +1,22 @@
+# Astro
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+*.swp
+
+# Old Jekyll (can remove after full migration)
 _site/
 .jekyll-metadata
 .jekyll-cache/
-.DS_Store

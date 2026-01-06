@@ -1,0 +1,177 @@
+.half-size {
+    width: 10%; /* Set the width to 50% of the original size */
+    height: auto; /* Set the height to auto to maintain the aspect ratio */
+}
+  
+.title {
+    /* ... existing styles ... */
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 2rem 0 1rem;
+    color: #333;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    gap: 0.25rem;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+
+.grid-item {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.grid-label {
+    align-items: center;
+    background-color: #ddd; /* Light grey background */
+    background: #f5f5f5;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    height: 24px;
+    justify-content: center;
+    padding: 0.25rem;
+    text-align: center;
+    transition: background 0.2s;
+    min-width: 24px;
+    line-height: 24px;
+}
+
+.grid-item:checked + .grid-label {
+    background-color: #666; /* Darker background for selected */
+    color: white;
+}
+
+.grid-label:hover {
+    background: #e0e0e0;
+}
+
+.selection-form {
+    display: flex;
+    gap: 2rem;
+    margin: 1rem 0;
+    max-width: 800px;
+}
+
+.title {
+    grid-column: 1 / -1; /* Make the title span all columns */
+    text-align: left;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.nav-tips {
+    color: #666;
+    font-size: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+.nav-tips small {
+    opacity: 0.8;
+}
+
+/* Add this to your style.css */
+body {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px; /* Set a maximum width for the content */
+    box-sizing: border-box;
+}
+
+.grid {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Optional: Add a background color to see the effect of the margins
+body {
+    background-color: #239c2b;
+} */
+
+#imagesContainer {
+    min-height: 500px;
+    display: grid;
+    /* Creates a grid with equal sized cells */
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0.1rem;
+    margin: 0rem 0;
+    position: relative;
+}
+
+#imagesContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Make only the first image span 2x2 */
+#imagesContainer img:nth-child(1) {
+    grid-row: 1 / 3;
+    grid-column: 1 / 3;
+}
+
+/* Optional: Add a subtle loading state */
+#imagesContainer.loading {
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Optional: Add hover effect */
+/* #imagesContainer img:hover {
+    transform: scale(1.25);
+    transition: transform 0.2s ease-in-out;
+} */
+
+/* Optional: if you want all images to be the same height */
+.image-wrapper {
+    aspect-ratio: 1/1; /* Makes squares - adjust ratio as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visualization-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+/* Math equations styling */
+.math-block {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-left: 4px solid #007bff;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+.grid .title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    grid-column: 1 / -1; /* Make the title span all columns */
+}
+
+.highlight {
+    margin: 1.5em 0;
+}
+
+.highlight pre {
+    line-height: 1.5;     /* Increases line spacing */
+    padding: 1em;         /* Adds padding around the code */
+}
+
+.highlight code {
+    white-space: pre;     /* Preserves whitespace and line breaks */
+    display: block;
+}
