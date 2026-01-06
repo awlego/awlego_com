@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Atmosphere from '../components/Atmosphere';
 import ThemeToggle from '../components/ThemeToggle';
+import Constellation from '../components/Constellation.astro';
+import CornerFlourish from '../components/CornerFlourish.astro';
 
 interface Props {
   title?: string;
@@ -47,7 +49,10 @@ const currentPath = Astro.url.pathname;
     <div class="container">
       <!-- Navigation -->
       <nav class="nav">
-        <a href="/" class="nav__brand">Alex</a>
+        <a href="/" class="nav__brand">
+          Alex
+          <Constellation season="auto" size={28} />
+        </a>
 
         <div class="nav__links">
           <div class="nav__menu">
@@ -68,33 +73,11 @@ const currentPath = Astro.url.pathname;
       <!-- Footer -->
       <footer class="footer">
         <span>&copy; {new Date().getFullYear()}</span>
-        <span class="footer__message" id="footer-message">
-          Light finds its way
-        </span>
       </footer>
     </div>
 
-    <!-- Update footer message based on theme -->
-    <script is:inline>
-      function updateFooterMessage() {
-        const isNight = document.documentElement.getAttribute('data-theme') === 'night';
-        const msg = document.getElementById('footer-message');
-        if (msg) {
-          msg.innerHTML = isNight
-            ? '<span class="footer__star">✦</span> Built with curiosity'
-            : 'Light finds its way';
-        }
-      }
+    <!-- Corner flourish decoration -->
+    <CornerFlourish position="bottom-right" />
 
-      // Initial update
-      updateFooterMessage();
-
-      // Watch for theme changes
-      const observer = new MutationObserver(updateFooterMessage);
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['data-theme']
-      });
-    </script>
   </body>
 </html>
