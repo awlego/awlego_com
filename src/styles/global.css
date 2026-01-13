@@ -326,6 +326,11 @@ a:hover {
   border-color: var(--color-accent-alt);
 }
 
+.tag--newsletter {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
 /* ========================================
    Footer
    ======================================== */

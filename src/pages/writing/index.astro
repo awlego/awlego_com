@@ -6,9 +6,15 @@ import { getCollection } from 'astro:content';
 const allPosts = await getCollection('posts', ({ data }) => data.published !== false);
 const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-// Helper to check if a post is a poem
-function isPoem(post: typeof allPosts[0]) {
-  return post.data.categories?.includes('Poems') || post.data.tags?.includes('poem');
+// Helper to get post type
+function getPostType(post: typeof allPosts[0]): 'poem' | 'newsletter' | 'essay' {
+  if (post.data.categories?.includes('Poems') || post.data.tags?.includes('poem')) {
+    return 'poem';
+  }
+  if (post.data.tags?.includes('decibel') || post.data.categories?.includes('Newsletter')) {
+    return 'newsletter';
+  }
+  return 'essay';
 }
 
 // Format date
@@ -35,14 +41,14 @@ function formatDate(date: Date) {
 
   <div class="posts">
     {sortedPosts.map((post) => {
-      const poem = isPoem(post);
+      const postType = getPostType(post);
       return (
-        <a href={`/writing/${post.slug}/`} class:list={['post-entry', { 'post-entry--poem': poem }]}>
+        <a href={`/writing/${post.slug}/`} class:list={['post-entry', { 'post-entry--poem': postType === 'poem' }]}>
           <div class="post-entry__bar"></div>
           <div class="post-entry__header">
             <h3 class="post-entry__title">{post.data.title}</h3>
-            <span class:list={['tag', { 'tag--poem': poem }]}>
-              {poem ? 'poem' : 'essay'}
+            <span class:list={['tag', `tag--${postType}`]}>
+              {postType}
             </span>
           </div>
           {post.data.excerpt && (

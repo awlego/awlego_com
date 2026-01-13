@@ -57,6 +57,7 @@ const currentPath = Astro.url.pathname;
         <div class="nav__links">
           <div class="nav__menu">
             <a href="/writing" class:list={[{ active: currentPath.startsWith('/writing') }]}>Writing</a>
+            <a href="/decibel" class:list={[{ active: currentPath === '/decibel' || currentPath === '/decibel/' }]}>Decibel</a>
             <a href="/about" class:list={[{ active: currentPath === '/about' || currentPath === '/about/' }]}>About</a>
             <a href="/now" class:list={[{ active: currentPath === '/now' || currentPath === '/now/' }]}>Now</a>
           </div>
