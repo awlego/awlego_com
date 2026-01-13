@@ -16,28 +16,9 @@ function isPoem(post: typeof allPosts[0]) {
 ---
 
 <BaseLayout>
-  <!-- Season indicator -->
-  <div class="season">
-    <span class="season__dot"></span>
-    Currently: Season of Awareness
-  </div>
-
-  <!-- Main headline -->
-  <section class="intro">
-    <h1>I think the meaning of life is to love and to be loved—and I'm curious about how to do both better.</h1>
-
-    <p class="intro__text">
-      I'm a maker of things—games, words, systems. I believe in discoverable depth:
-      surfaces that reward curiosity. This is where I share what I'm learning.
-    </p>
-  </section>
-
-  <!-- Divider -->
-  <div class="divider"></div>
-
   <!-- Featured writing section -->
   <section>
-    <h2>Featured Writing</h2>
+    <h2>Recent Writing</h2>
 
     <div class="posts">
       {featuredPosts.map((post) => {
