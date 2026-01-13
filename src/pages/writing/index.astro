@@ -7,12 +7,15 @@ const allPosts = await getCollection('posts', ({ data }) => data.published !== f
 const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 // Helper to get post type
-function getPostType(post: typeof allPosts[0]): 'poem' | 'newsletter' | 'essay' {
+function getPostType(post: typeof allPosts[0]): 'poem' | 'newsletter' | 'research' | 'essay' {
   if (post.data.categories?.includes('Poems') || post.data.tags?.includes('poem')) {
     return 'poem';
   }
   if (post.data.tags?.includes('decibel') || post.data.categories?.includes('Newsletter')) {
     return 'newsletter';
+  }
+  if (post.data.tags?.includes('research')) {
+    return 'research';
   }
   return 'essay';
 }
@@ -37,13 +40,23 @@ function formatDate(date: Date) {
     </p>
   </section>
 
-  <div class="divider"></div>
+  <div class="search-container">
+    <div id="search"></div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="essay">Essays</button>
+    <button class="filter-btn" data-filter="poem">Poems</button>
+    <button class="filter-btn" data-filter="newsletter">Newsletter</button>
+    <button class="filter-btn" data-filter="research">Research</button>
+  </div>
 
   <div class="posts">
     {sortedPosts.map((post) => {
       const postType = getPostType(post);
       return (
-        <a href={`/writing/${post.slug}/`} class:list={['post-entry', { 'post-entry--poem': postType === 'poem' }]}>
+        <a href={`/writing/${post.slug}/`} class:list={['post-entry', { 'post-entry--poem': postType === 'poem' }]} data-type={postType}>
           <div class="post-entry__bar"></div>
           <div class="post-entry__header">
             <h3 class="post-entry__title">{post.data.title}</h3>
@@ -61,4 +74,104 @@ function formatDate(date: Date) {
       );
     })}
   </div>
+
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script src="/pagefind/pagefind-ui.js" is:inline></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: false,
+        showImages: false,
+      });
+    });
+  </script>
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const posts = document.querySelectorAll('.post-entry');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter posts
+        posts.forEach(post => {
+          const type = post.getAttribute('data-type');
+          if (filter === 'all' || type === filter) {
+            post.style.display = '';
+          } else {
+            post.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 3px;
+      background: transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .filter-btn.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-bg);
+    }
+
+    .search-container {
+      margin-bottom: var(--space-3);
+    }
+
+    /* Pagefind UI customization */
+    :root {
+      --pagefind-ui-scale: 0.9;
+      --pagefind-ui-primary: var(--color-accent);
+      --pagefind-ui-text: var(--color-text);
+      --pagefind-ui-background: var(--color-bg);
+      --pagefind-ui-border: var(--color-border);
+      --pagefind-ui-tag: var(--color-bg-subtle);
+      --pagefind-ui-border-width: 1px;
+      --pagefind-ui-border-radius: 3px;
+      --pagefind-ui-font: var(--font-sans);
+    }
+
+    .pagefind-ui__search-input {
+      font-family: var(--font-sans) !important;
+    }
+
+    .pagefind-ui__result-link {
+      color: var(--color-text) !important;
+    }
+
+    .pagefind-ui__result-link:hover {
+      color: var(--color-accent) !important;
+    }
+  </style>
 </BaseLayout>

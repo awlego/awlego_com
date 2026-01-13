@@ -331,6 +331,11 @@ a:hover {
   border-color: var(--color-accent);
 }
 
+.tag--research {
+  color: #7aa2f7;
+  border-color: #7aa2f7;
+}
+
 /* ========================================
    Footer
    ======================================== */
