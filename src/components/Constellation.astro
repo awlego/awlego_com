@@ -23,7 +23,7 @@ const activeSeason = season === 'auto' ? getCurrentSeason() : season;
 <span class="constellation" data-season={activeSeason}>
   {activeSeason === 'spring' && (
     <!-- Leo: curved sickle shape -->
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path class="line" d="M6 4 L9 7 L7.5 12 L10.5 16 L15 19 L19.5 17.5" />
       <circle class="star star--dim" cx="6" cy="4" r="1" />
       <circle class="star" cx="9" cy="7" r="1.2" />
@@ -36,7 +36,7 @@ const activeSeason = season === 'auto' ? getCurrentSeason() : season;
 
   {activeSeason === 'summer' && (
     <!-- Cygnus: cross shape -->
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path class="line" d="M12 3 L12 21 M4 13 L20 13" />
       <circle class="star" cx="12" cy="3" r="1" />
       <circle class="star star--bright" cx="12" cy="10" r="1.5" />
@@ -48,7 +48,7 @@ const activeSeason = season === 'auto' ? getCurrentSeason() : season;
 
   {activeSeason === 'fall' && (
     <!-- Cassiopeia: W shape -->
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path class="line" d="M3 9 L7.5 15 L12 7.5 L16.5 15 L21 9" />
       <circle class="star" cx="3" cy="9" r="1" />
       <circle class="star star--dim" cx="7.5" cy="15" r="1" />
@@ -60,7 +60,7 @@ const activeSeason = season === 'auto' ? getCurrentSeason() : season;
 
   {activeSeason === 'winter' && (
     <!-- Orion: belt + shoulders -->
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path class="line" d="M6 4.5 L8.25 11.25 L4.5 19.5 M18 4.5 L15.75 11.25 L19.5 19.5 M8.25 11.25 L15.75 11.25" />
       <circle class="star" cx="6" cy="4.5" r="1" />
       <circle class="star" cx="18" cy="4.5" r="1" />

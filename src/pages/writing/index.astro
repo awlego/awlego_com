@@ -44,12 +44,12 @@ function formatDate(date: Date) {
     <div id="search"></div>
   </div>
 
-  <div class="filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="essay">Essays</button>
-    <button class="filter-btn" data-filter="poem">Poems</button>
-    <button class="filter-btn" data-filter="newsletter">Newsletter</button>
-    <button class="filter-btn" data-filter="research">Research</button>
+  <div class="filters" role="group" aria-label="Filter posts by type">
+    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter-btn" data-filter="essay" aria-pressed="false">Essays</button>
+    <button class="filter-btn" data-filter="poem" aria-pressed="false">Poems</button>
+    <button class="filter-btn" data-filter="newsletter" aria-pressed="false">Newsletter</button>
+    <button class="filter-btn" data-filter="research" aria-pressed="false">Research</button>
   </div>
 
   <div class="posts">
@@ -95,9 +95,13 @@ function formatDate(date: Date) {
       btn.addEventListener('click', () => {
         const filter = btn.getAttribute('data-filter');
 
-        // Update active button
-        filterBtns.forEach(b => b.classList.remove('active'));
+        // Update active button and aria-pressed state
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
 
         // Filter posts
         posts.forEach(post => {
@@ -143,6 +147,11 @@ function formatDate(date: Date) {
       background: var(--color-accent);
       border-color: var(--color-accent);
       color: var(--color-bg);
+    }
+
+    .filter-btn:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
     }
 
     .search-container {

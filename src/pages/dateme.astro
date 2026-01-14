@@ -1,0 +1,22 @@
+---
+// Redirect to external dating profile
+const redirectUrl = "https://paper.dropbox.com/doc/Alex-Wilsons-dating-profile--BHJ1zIs~Rzg80RuZ1Uu66JRFAg-8e5PVywfortyCJXpB6I00";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <link rel="canonical" href={redirectUrl} />
+    <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <h1>Redirecting...</h1>
+    <p><a href={redirectUrl}>Click here if you are not redirected.</a></p>
+    <script define:vars={{ redirectUrl }}>
+      window.location.href = redirectUrl;
+    </script>
+  </body>
+</html>
