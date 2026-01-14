@@ -21,4 +21,4 @@ My scores on the "Big 5 Personality Test" from [Truity.com](https://www.truity.c
 2. Conscientiousness: 54%
 3. Extraversion: 46%
 4. Agreeableness: 75%
-5. Neuroticisim: 2%
+5. Neuroticism: 2%
