@@ -7,7 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h1>About</h1>
 
     <p class="intro__text">
-      I'm Alex. I make things sometimes—games, mostly. I write when I have something I'm trying to understand.
+      This is the website of Alex Wilson. Here you will find my musings about the world, mostly intended for myself, but some of which others may find interesting.
     </p>
   </section>
 
@@ -18,24 +18,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       I like things with discoverable depth: surfaces that reward curiosity, experiences that reveal themselves slowly. Games that teach you to break them. Conversations that wander somewhere unexpected.
     </p>
 
+    <h2>Beliefs</h2>
+    <i class="section-subtitle">Some strongly held, some loosely held.</i>
     <p>
-      Lately I've been thinking about how attention works. What we notice and what we miss. The gap between seeing someone and <em>seeing</em> them.
+    I believe in play.
     </p>
-
-    <h2>Some things I keep returning to</h2>
-
-    <ul>
-      <li>The transitions between seasons—how you can feel a day shift</li>
-      <li>Why some games feel alive and others don't</li>
-      <li>The way time moves differently when you're paying attention</li>
-      <li>What people mean versus what they say</li>
+    <p>
+    I believe in seeking slack.
+    </p>
+    <p>
+    I believe in looking at things with enchanted eyes — choosing to see wonder, choosing to be delighted
+    </p>
+    <p>
+    I believe in the seasons. There are seasons of growth, seasons of decay, seasons of quiet frost, seasons of bountiful joy and harvest. Friendships have seasons. Careers have seasons. Selves have seasons.
+    </p>
     </ul>
-
-    <h2>Seasons</h2>
-
-    <p>
-      Since 2016, I've organized my life into "Seasons"—loose, intentional periods where I let one thing take up more space than usual. Season of Awareness. Season of Making. Season of Writing. It's less a system than a way of noticing what's already asking for attention.
-    </p>
 
     <h2>Elsewhere</h2>
 
@@ -44,4 +41,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <li><a href="https://twitter.com/awlego" target="_blank" rel="noopener">Twitter</a></li>
     </ul>
   </div>
+
+  <footer class="about-footer">
+    <p>I am not under any NDA or other agreement that would preclude me from revealing that such an agreement exists.</p>
+  </footer>
 </BaseLayout>
+
+<style>
+  h2 + .section-subtitle {
+    display: block;
+    margin-top: -0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border, #e0e0e0);
+    font-size: 0.85rem;
+    color: var(--color-text-muted, #666);
+  }
+
+  .about-footer p {
+    margin: 0;
+  }
+</style>
