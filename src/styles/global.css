@@ -215,7 +215,7 @@ a:focus-visible {
 }
 
 .intro__text {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-size: 17px;
   line-height: 1.75;
   color: var(--color-text-muted);
