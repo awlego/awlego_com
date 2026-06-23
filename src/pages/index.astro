@@ -24,7 +24,7 @@ function isPoem(post: typeof allPosts[0]) {
       {featuredPosts.map((post) => {
         const poem = isPoem(post);
         return (
-          <a href={`/writing/${post.slug}/`} class:list={['post-entry', { 'post-entry--poem': poem }]}>
+          <a href={`/writing/${post.id}/`} class:list={['post-entry', { 'post-entry--poem': poem }]}>
             <div class="post-entry__bar"></div>
             <div class="post-entry__header">
               <h3 class="post-entry__title">{post.data.title}</h3>

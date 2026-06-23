@@ -1,18 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import { formatDate } from '../../utils/formatDate';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => data.published !== false);
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 // Helper to check if a post is a poem
 function isPoem(post: CollectionEntry<'posts'>) {

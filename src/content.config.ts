@@ -1,7 +1,15 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const posts = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/posts',
+    // Preserve legacy slugs: use the filename (sans extension) verbatim.
+    // The glob loader's default generateId slugifies, which would turn
+    // e.g. "poem.36" into "poem-36" and change every dotted poem URL.
+    generateId: ({ entry }) => entry.replace(/\.mdx?$/, ''),
+  }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
