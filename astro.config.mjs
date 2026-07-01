@@ -6,6 +6,9 @@ export default defineConfig({
   site: 'https://awlego.com',
   integrations: [react(), pagefind()],
   output: 'static',
+  redirects: {
+    '/posts': '/writing',
+  },
   build: {
     format: 'directory',
   },
