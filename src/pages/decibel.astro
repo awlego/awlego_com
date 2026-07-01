@@ -10,7 +10,7 @@ const allPosts = await getCollection('posts', ({ data }) =>
 const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<BaseLayout title="Decibel | Alex Wilson" description="Decibel - a newsletter of interesting things from around the internet, curated by Alex Wilson.">
+<BaseLayout title="Decibel | Alex Wilson" description="Decibel - Alex Wilson's newsletter of interesting things he finds around the internet.">
   <section class="intro">
     <h1>Decibel</h1>
 
