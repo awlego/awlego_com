@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { formatDate } from '../../utils/formatDate';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => data.published !== false);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Helper to check if a post is a poem
+function isPoem(post: CollectionEntry<'posts'>) {
+  return post.data.categories?.includes('Poems') || post.data.tags?.includes('poem');
+}
+
+const poem = isPoem(post);
+---
+
+<BaseLayout title={`${post.data.title} | Alex Wilson`} description={post.data.excerpt}>
+  <article class:list={['post', { 'post--poem': poem }]}>
+    <header>
+      <h1>{post.data.title}</h1>
+      <div class="post__meta">
+        <span class:list={['tag', { 'tag--poem': poem }]}>
+          {poem ? 'poem' : 'essay'}
+        </span>
+        <span>{formatDate(post.data.date)}</span>
+      </div>
+    </header>
+
+    <div class="post__content">
+      <Content />
+    </div>
+  </article>
+
+  <nav class="post-nav">
+    <a href="/writing" class="link--accent">← Back to all writing</a>
+  </nav>
+</BaseLayout>

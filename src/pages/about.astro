@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About | Alex Wilson" description="Alex Wilson writes about the things he's trying to understand.">
+  <section class="intro">
+    <img
+      class="about__avatar"
+      src="/assets/images/bio1.jpg"
+      alt="Alex Wilson"
+      width="160"
+      height="160"
+      loading="eager"
+    />
+    <h1>About</h1>
+
+    <p class="intro__text">
+      This is the website of Alex Wilson. Here you will find my musings about the world, mostly intended for myself, but some of which others may find interesting.
+    </p>
+    <p>
+    I'm on twitter @awlego; my dms are open. You can also reach me at @awlego many places around the internet. Say hi! I respond to almost all good faith correspondance.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <div class="post__content">
+    <h2>Beliefs</h2>
+    <p>
+    I believe in play.
+    </p>
+    <p>
+    I believe in seeking slack.
+    </p>
+    <p>
+    I believe in looking at things with enchanted eyes — choosing to see wonder, choosing to be delighted.
+    </p>
+    <p>
+    I believe in the seasons. There are seasons of growth, seasons of sadness, seasons of quiet, seasons of bountiful joy and harvest. Friendships have seasons. Careers have seasons. Selves have seasons.
+    </p>
+    <p>
+    I believe in sleeping in.
+    </p>
+    <p>
+    I believe in food that makes "mmmmmmmm" escape my lips.
+    </p>
+    <p>
+    I believe in the importance of friendship.
+    </p>
+    <p>
+    I believe in laughter and in serious thought.
+    </p>
+    <p>
+    I believe in interpretting words and actions charitably.
+    </p>
+    <p>
+    I believe there are many lives worth living.
+    </p>
+    <p>
+    I believe in focusing on what you want to see more of in the world. Joke about the outcomes you want to see in the world. 
+    </p>
+    <p>
+    I believe the meaning of life is to love and to be loved.
+    </p>
+    </ul>
+
+    <h2>Elsewhere</h2>
+
+    <ul>
+      <li><a href="https://github.com/awlego" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://twitter.com/awlego" target="_blank" rel="noopener">Twitter</a></li>
+    </ul>
+  </div>
+
+  <footer class="about-footer">
+    <p>I am not under any NDA or other agreement that would preclude me from revealing that such an agreement exists.</p>
+  </footer>
+</BaseLayout>
+
+<style>
+  .about__avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 25% 30%;
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+
+  h2 + .section-subtitle {
+    display: block;
+    margin-top: -0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border, #e0e0e0);
+    font-size: 0.85rem;
+    color: var(--color-text-muted, #666);
+  }
+
+  .about-footer p {
+    margin: 0;
+  }
+</style>

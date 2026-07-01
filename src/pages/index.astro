@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all published posts, sorted by date
+const allPosts = await getCollection('posts', ({ data }) => data.published !== false);
+const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Featured posts - pick a few recent ones with good excerpts
+const featuredPosts = sortedPosts.slice(0, 10);
+
+// Helper to check if a post is a poem
+function isPoem(post: typeof allPosts[0]) {
+  return post.data.categories?.includes('Poems') || post.data.tags?.includes('poem');
+}
+---
+
+<BaseLayout title="Alex Wilson" description="Alex Wilson's homepage">
+  <!-- Featured writing section -->
+  <section>
+    <h2>Recent Writing</h2>
+
+    <div class="posts">
+      {featuredPosts.map((post) => {
+        const poem = isPoem(post);
+        return (
+          <a href={`/writing/${post.id}/`} class:list={['post-entry', { 'post-entry--poem': poem }]}>
+            <div class="post-entry__bar"></div>
+            <div class="post-entry__header">
+              <h3 class="post-entry__title">{post.data.title}</h3>
+              <span class:list={['tag', { 'tag--poem': poem }]}>
+                {poem ? 'poem' : 'essay'}
+              </span>
+            </div>
+            {post.data.excerpt && (
+              <p class="post-entry__excerpt">{post.data.excerpt}</p>
+            )}
+          </a>
+        );
+      })}
+    </div>
+
+    <p style="margin-top: var(--space-5);">
+      <a href="/writing" style="color: var(--color-accent);">View all writing →</a>
+    </p>
+  </section>
+</BaseLayout>

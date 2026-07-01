@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../utils/formatDate';
+
+// Get all Decibel posts, sorted by date (newest first)
+const allPosts = await getCollection('posts', ({ data }) =>
+  data.published !== false && data.tags?.includes('decibel')
+);
+const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Decibel | Alex Wilson" description="Decibel - Alex Wilson's newsletter of interesting things he finds around the internet.">
+  <section class="intro">
+    <h1>Decibel</h1>
+
+    <p class="intro__text">
+      My newsletter where I share things I find around the internet.
+    </p>
+  </section>
+
+  <p class="subscribe-links">
+    <a href="https://awlego.substack.com/" target="_blank" rel="noopener" class="link--accent">
+      Subscribe on Substack →
+    </a>
+    <span class="subscribe-links__separator" aria-hidden="true">·</span>
+    <a href="https://awlego.substack.com/feed" target="_blank" rel="noopener" class="link--accent">
+      RSS
+    </a>
+  </p>
+
+  <div class="divider"></div>
+
+  <div class="posts">
+    {sortedPosts.map((post) => (
+      <a href={`/writing/${post.id}/`} class="post-entry">
+        <div class="post-entry__bar"></div>
+        <div class="post-entry__header">
+          <h3 class="post-entry__title">{post.data.title}</h3>
+          <span class="tag tag--newsletter">newsletter</span>
+        </div>
+        <p class="post-entry__date">
+          {formatDate(post.data.date)}
+        </p>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
