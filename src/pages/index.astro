@@ -7,7 +7,7 @@ const allPosts = await getCollection('posts', ({ data }) => data.published !== f
 const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 // Featured posts - pick a few recent ones with good excerpts
-const featuredPosts = sortedPosts.slice(0, 5);
+const featuredPosts = sortedPosts.slice(0, 10);
 
 // Helper to check if a post is a poem
 function isPoem(post: typeof allPosts[0]) {
@@ -15,7 +15,7 @@ function isPoem(post: typeof allPosts[0]) {
 }
 ---
 
-<BaseLayout title="Alex Wilson" description="Essays, poems, and reflections on mental models, growth, and the things I'm trying to understand.">
+<BaseLayout title="Alex Wilson" description="Alex Wilson's homepage">
   <!-- Featured writing section -->
   <section>
     <h2>Recent Writing</h2>

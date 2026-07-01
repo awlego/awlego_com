@@ -4,6 +4,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="About | Alex Wilson" description="Alex Wilson writes about the things he's trying to understand.">
   <section class="intro">
+    <img
+      class="about__avatar"
+      src="/assets/images/bio1.jpg"
+      alt="Alex Wilson"
+      width="160"
+      height="160"
+      loading="eager"
+    />
     <h1>About</h1>
 
     <p class="intro__text">
@@ -70,6 +78,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  .about__avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 25% 30%;
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+
   h2 + .section-subtitle {
     display: block;
     margin-top: -0.75rem;

@@ -81,7 +81,6 @@ function isActive(path: string): boolean {
             <a href="/writing" class:list={[{ active: isActive('/writing') }]} aria-current={isActive('/writing') ? 'page' : undefined}>Writing</a>
             <a href="/decibel" class:list={[{ active: isActive('/decibel') }]} aria-current={isActive('/decibel') ? 'page' : undefined}>Decibel</a>
             <a href="/about" class:list={[{ active: isActive('/about') }]} aria-current={isActive('/about') ? 'page' : undefined}>About</a>
-            <a href="/now" class:list={[{ active: isActive('/now') }]} aria-current={isActive('/now') ? 'page' : undefined}>Now</a>
           </div>
 
           <ThemeToggle client:load />

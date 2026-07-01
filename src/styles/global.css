@@ -218,7 +218,7 @@ a:focus-visible {
   font-family: var(--font-serif);
   font-size: 17px;
   line-height: 1.75;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   max-width: 520px;
   margin-top: 28px;
 }
