@@ -1,22 +1,320 @@
 ---
-// Redirect to external dating profile
-const redirectUrl = "https://paper.dropbox.com/doc/Alex-Wilsons-dating-profile--BHJ1zIs~Rzg80RuZ1Uu66JRFAg-8e5PVywfortyCJXpB6I00";
+import BaseLayout from '../layouts/BaseLayout.astro';
+// Unlisted: not linked from nav/homepage, noindexed, excluded from site search.
+
+const img = (name: string) => `/images/dateme/${name}`;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Redirecting...</title>
-    <link rel="canonical" href={redirectUrl} />
-    <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />
-    <meta name="robots" content="noindex" />
-  </head>
-  <body>
-    <h1>Redirecting...</h1>
-    <p><a href={redirectUrl}>Click here if you are not redirected.</a></p>
-    <script define:vars={{ redirectUrl }}>
-      window.location.href = redirectUrl;
-    </script>
-  </body>
-</html>
+<BaseLayout title="Alex's Dating Profile" description="Alex Wilson's dating profile." noindex={true}>
+  <section class="intro">
+    <h1>Alex&rsquo;s dating profile 😘</h1>
+
+    <p class="intro__text">
+      This is my dating profile. You might find me elsewhere on the internet as 'awlego'.
+    </p>
+    <p><em>updated Aug 2026:</em></p>
+  </section>
+
+  <div class="divider"></div>
+
+  <div class="post__content">
+    <p>Seeking longeset term romantic partnership with a woman who wants to build a playful, curious, connected & loving life together.</p>
+
+    <div class="photo-row">
+      <figure>
+        <img src={img('nasa-cap-closeup.jpg')} alt="Closeup of Alex in a NASA cap on a sunny day" loading="eager" />
+        <figcaption>This is me.</figcaption>
+      </figure>
+
+      <figure>
+        <img src={img('backpacking-foggy-ridgeline.jpg')} alt="Alex backpacking along a foggy ridgeline" loading="lazy" />
+        <figcaption>Backpacking along a foggy ridgeline, smiling through the fog</figcaption>
+      </figure>
+    </div>
+
+    <h3>Make or break it</h3>
+    <ul>
+      <li>Age: 34</li>
+      <li>Gender: Male</li>
+      <li>Location: Currently Millbrae (just south of San Francisco), preference for long term residence on US west coast</li>
+      <li>Wants kids: Definitely!</li>
+      <li>Looking for: women</li>
+      <li>Height: 6&rsquo; 0&rdquo;</li>
+    </ul>
+
+    <figure>
+      <img src={img('kitchen-dancing.jpg')} alt="Dancing and singing in the kitchen" loading="lazy" />
+      <figcaption>Dancing and singing in the kitchen is <em>very important</em></figcaption>
+    </figure>
+
+    <figure>
+      <img src={img('tahoe-dancing.jpg')} alt="Dancing in a Tahoe cabin with mountain views out the windows" loading="lazy" />
+      <figcaption>Little wiggles need not be confined to the kitchen.</figcaption>
+    </figure>
+
+    <h2>What I&rsquo;m like</h2>
+
+
+    <h3>Personality</h3>
+    <p>
+      I&rsquo;m curious and I like to understand the why and how of how our world (including you! 😉) works. Ideally you and I could stay up late learning how things work and sharing the cool things we discover.
+    </p>
+    <p>I&rsquo;m playful and silly. I like goofing off and am not afraid to laugh at myself.</p>
+
+    <div class="photo-row">
+      <figure>
+        <img src={img('farmers-market-carrot.jpg')} alt="Holding up an impressively large carrot at the farmer's market" loading="lazy" />
+        <figcaption></figcaption>
+      </figure>
+
+      <figure>
+        <img src={img('ice-cream.jpg')} alt="Grinning with a scoop of mango ice cream in a waffle cone" loading="lazy" />
+        <figcaption></figcaption>
+      </figure>
+    </div>
+    <p>I trust easily.</p>
+    <p>I&rsquo;m very open and agreeable, with average conscientiousness and split intra/extraversion. I exhibit very little neuroticism.</p>
+    
+    <p>I feel at home with technology and in nature.</p>
+    <p>I feel at home with people who align with &ldquo;nerds&rdquo;. At Caltech I made many lifelong friendships. "Ohhhh *these* are my people".</p>
+    
+    <figure>
+      <img src={img('tropical-friends.jpg')} alt="Hanging out with friends in a tropical location" loading="lazy" />
+      <figcaption>Hangin&rsquo; with friends in tropical paradise</figcaption>
+    </figure>
+
+    <p>
+      I feel a vivid aliveness in many things, but especially in music and food and the smells of flowers and beautiful people and the wonders of the universe. My sometimes roommates roll their eyes at my sounds of delight while eating.
+    </p>
+
+    <blockquote>
+      <p>
+        One of my favorite memories with Alex: giggling endlessly while showing JPL astronomers that we could use cheez-its as surprisingly effective pinhole projectors during the 2018 solar eclipse in Eastern Oregon, after a weekend of exploring and great conversation. Adventure, curiosity, deep discussion, and silliness are always on the menu with Alex (not to mention his great cooking!)!
+      </p>
+      <p>— my friend Annie</p>
+    </blockquote>
+
+        
+    <h3>Beliefs</h3>
+    <p>I believe in play.</p>
+    <p>I believe in seeking slack.</p>
+    <p>I believe in looking at things with enchanted eyes — choosing to see wonder, choosing to be delighted.</p>
+    <p>I believe in the seasons. There are seasons of growth, seasons of sadness, seasons of quiet, seasons of bountiful joy and harvest. Friendships have seasons. Careers have seasons. Selves have seasons.</p>
+    <p>I believe in sleeping in.</p>
+    <p>I believe in food that makes &ldquo;mmmmmmmm&rdquo; escape my lips.</p>
+    <p>I believe in the importance of friendship.</p>
+    <p>I believe in laughter and in serious thought.</p>
+    <p>I believe in interpreting words and actions charitably.</p>
+    <p>I believe there are many lives worth living.</p>
+    <p>I believe in focusing on what you want to see more of in the world. Joke about the outcomes you want to see in the world.</p>
+    <p>I believe the meaning of life is to love and to be loved.</p>
+
+    <h3>Lifestyle</h3>
+    <p>
+      <strong>Hobbies:</strong> Most of my hobby time is spent cooking, gaming, outdoors, or building something. Anything active, intellectual, or creative is generally up my alley. Here are some examples of some <strong>physical adventures</strong>:
+    </p>
+
+   <figure>
+      <img src={img('ski-the-trees.jpg')} alt="Skiing through the trees" loading="lazy" />
+      <figcaption>Learn to ski the trees with me?</figcaption>
+    </figure>
+    <div class="photo-row">
+      <figure>
+        <img src={img('hawaii-hike.jpg')} alt="Hiking in Hawaii" loading="lazy" />
+        <figcaption>Hiking in Hawaii with my brother.</figcaption>
+      </figure>
+      <figure>
+        <img src={img('angel-island-hike.jpg')} alt="Hiking on Angel Island with the Golden Gate Bridge in the background" loading="lazy" />
+        <figcaption>Always happy on a trail.</figcaption>
+      </figure>
+    </div>
+
+    <p>
+      I&rsquo;m into scuba diving, tennis, skiing, running, mountain biking, and am open to trying most things. I'm not a pure adrenaline seeker and I enjoy the quiet days too, but I&rsquo;d love to play around the world with you 🙂
+    </p>
+    <p>Sometimes I get <strong>adventurous in the kitchen</strong>:</p>
+    <div class="photo-row">
+      <figure>
+        <img src={img('chef-plating.jpg')} alt="In full chef whites, tongue out in concentration, plating four courses of duck" loading="lazy" />
+        <figcaption>I enjoy cooking casually and as a hobby!</figcaption>
+      </figure>
+
+      <figure>
+        <img src={img('pizza-heaven.jpg')} alt="Homemade pizza" loading="lazy" />
+        <figcaption>Pizza is basically heaven on earth.</figcaption>
+      </figure>
+    </div>
+
+    <figure>
+      <img src={img('dining-out.jpg')} alt="Smiling at a restaurant table spread with Indian food" loading="lazy" />
+      <figcaption>This could be us.</figcaption>
+    </figure>
+
+    <p>
+      Sometimes I <strong>build things</strong>: woodworking, <a href="https://www.youtube.com/watch?v=5tKVfRC0vOw" target="_blank" rel="noopener">electronics projects</a>.
+    </p>
+
+    <figure>
+      <img src={img('birdhouse-prank.jpg')} alt="A homemade birdhouse" loading="lazy" />
+      <figcaption>I once made a birdhouse for a girl I liked so she could give it away as a part of a prank.</figcaption>
+    </figure>
+
+    <p>I&rsquo;m also into board games, video games, and word games.</p>
+
+    <figure>
+      <img src={img('terraforming-mars.png')} alt="Grinning while holding Terraforming Mars as Ben pouts" loading="lazy" />
+      <figcaption>Terraforming Mars: I won. Ben did not.</figcaption>
+    </figure>
+
+    <figure>
+      <img src={img('factorio-logo.png')} alt="Factorio logo" loading="lazy" />
+      <figcaption>10/10 video game</figcaption>
+    </figure>
+
+    <p>I love to read and occasionally dabble in writing <a href="/writing">poetry</a>.</p>
+
+    <p>
+      I want to learn about your hobbies and what you care about! I&rsquo;m interested by just about everything under the sun, so it&rsquo;s just a matter of if someone has shown me how cool it is yet.
+    </p>
+
+    <p>I don&rsquo;t really drink, so if alcohol is a significant part of your lifestyle we&rsquo;re unlikely to be an excellent match.</p>
+
+    <p><strong>Money</strong></p>
+    <p>
+      I have a healthy relationship with money. I&rsquo;m financially stable with no debts and an engineering job. I like to be generous to myself and others, but in general am relatively frugal.
+    </p>
+
+    <p><strong>Family</strong></p>
+    <p>
+      I grew up in a stable and loving Christian household (though I'm agnostic) and get along great with my parents and brother. My brother and I are quite close, despite us living many states apart.
+    </p>
+
+    <figure>
+      <img src={img('brother-wedding.jpg')} alt="Alex and his brother at the wedding" loading="lazy" />
+      <figcaption>My brother and I at his wedding.</figcaption>
+    </figure>
+    <figure>
+      <img src={img('jacket-photo-8.jpg')} alt="Wearing the trusty jacket again" loading="lazy" />
+      <figcaption>Norway with the grandparents was so special.</figcaption>
+    </figure>
+
+    <h3>My strengths</h3>
+    <ul class="compact-list">
+      <li>I&rsquo;m accepting and trusting.</li>
+      <li>I'm attentive and present.</li>
+      <li>I'm scholastically smart. I can learn information, play the necessary games, and accomplish goals.</li>
+      <li>I'm actively and regularly trying to improve. Small stuff I'll change quickly. The core of me changes slowly, deliberately, and regularly. The slowness is a feature; I am stable and secure and dependable.</li>
+      <li>I work hard, but not to the exclusion of life.</li>
+      <li>I take things seriously yet hold them lightly.</li>
+      <li>I care about the world and the people in it.</li>
+      <li>I&rsquo;m easy going, carrying very little stress.</li>
+      <li>I&rsquo;m very slow to anger.</li>
+      <li>I&rsquo;m handy and helpful — I'll fix stuff around our home.</li>
+      <li>I&rsquo;m generous, gracious, and affectionate.</li>
+    </ul>
+
+    <h3>My weaknesses</h3>
+    <ul class="compact-list">
+      <li>I don&rsquo;t like conflict, so I&rsquo;ll sometimes downplay issues in an attempt to minimize being upset. Luckily I'm aware of this and it is something I actively work on!</li>
+      <li>In weakness I can fall for procrastination.</li>
+    </ul>
+
+    <h2>What I&rsquo;m looking for in my partner</h2>
+    <p>
+      <strong>A woman who wants to grow to be better together.</strong> I want someone who helps teach with love and grace and wants the same for themselves. Romantic partnerships take effort and commitment and continually showing up.
+    </p>
+    <p>
+      <strong>Someone who cares about others.</strong> People who go out of their way to help those around them are very attractive.
+    </p>
+    <p>
+      <strong>Intellectual curiosity and intelligence.</strong> I&rsquo;m a curious person who asks weird questions sometimes. I want a partner who can hold hypotheticals, ask what-ifs, and dream together. If you enjoy talking about philosophy, how things work, and ideas in general, we will get along. I&rsquo;m looking for a joyful mind at work; someone curious who likes thinking about the serious and the silly.
+    </p>
+    <p>
+      <strong>Silliness.</strong> Life is too short to not be full of laughter. I generally find most parts of life are worth taking seriously, and therefore worth beign able to laugh at. Being able to laugh easily together is important to survive <a href="https://waitbutwhy.com/2014/02/pick-life-partner-part-2.html" target="_blank" rel="noopener">20,000 Wednesdays</a> together.
+    </p>
+    <p>
+      <strong>Physical affection.</strong> Touch means a lot to me. I&rsquo;m a sexual creature and feel a deep sense of love and connection through physical contact, in all forms.
+    </p>
+    <p>
+      <strong>Someone physically active who likes to spend time outside.</strong> I&rsquo;m someone who is endlessly fascinated by virtual worlds and strategy video games, books, Wikipedia, etc., and can easily spend time in front of the computer. As such, I&rsquo;ve discovered that it&rsquo;s best if my partner has a natural drive towards the sunlight, towards movement, and being fit. I really like all of those things myself, and it works best if I&rsquo;m not the only one in the partnership initiating outdoors adventures. Bonus points if we can delight in games together too.
+    </p>
+    <p>
+      <strong>Clear verbal communication.</strong> I tend to have better relationships with people who aren&rsquo;t shy about sharing their thoughts, feelings, dreams, hopes, desires, problems, and worries. Ideally we both share a commitment to improving our communication paterns and tools as our relationship grows.
+    </p>
+    <p>
+      <strong>Wants to eventually be a mother/parent.</strong> I&rsquo;m looking to raise a family with my partner and want them to be excited about being a mother and raising kids together one day. I&rsquo;m very much looking forward to being a father.
+    </p>
+
+    <h2>What I want my family to look like</h2>
+    <p>I&rsquo;m looking for a future wife/partner for life.</p>
+    <p>
+      I want kids; 2 sounds nice but the future is unknown! I want to raise them to be loving, curious, and full of joy and confidence in a place full of community where the kids (and adults) are welcome to run around and play outside and get dirty.
+    </p>
+    <p>I like to promote hospitality. Can we host people over for dinner and have guests stay with us?</p>
+
+    <figure>
+      <img src={img('reading-to-kid.jpg')} alt="Lying on the floor reading a picture book with a toddler" loading="lazy" />
+      <figcaption>Reading to my friends&rsquo; kid.</figcaption>
+    </figure>
+
+    <h2>Contact</h2>
+    <p>Does any of the above interest you? Reach out so we can set something up.</p>
+    <p>
+      I&rsquo;m open to meeting online and in person. I often suggest walks or coffee/tea for first dates, but if you already know we would hit it off, mention that something longer might be fun.
+    </p>
+    <ul>
+      <li>Twitter DM: <a href="https://twitter.com/awlego" target="_blank" rel="noopener">@awlego</a></li>
+      <li>Email: awlego@gmail.com</li>
+      <li>Signal/Texting/etc: DM for number</li>
+    </ul>
+    <p>
+      Feel free to message me about anything on my profile. It takes courage to reach out to an internet person with an invitation to meet or talk more, so just by messaging me I&rsquo;ll be impressed. I&rsquo;m quick to open up, so if you ask a deep or personal question in good faith I&rsquo;ll very likely reply in kind.
+    </p>
+    <p>Thanks for reading!</p>
+
+    <figure>
+      <img src={img('unsorted-04.png')} alt="Extended family in puffy jackets" loading="lazy" />
+      <figcaption>If you&rsquo;re looking to eventually have a puff-wearing extended family, I can provide.</figcaption>
+    </figure>
+  </div>
+</BaseLayout>
+
+<style>
+  figure {
+    margin: var(--space-4) 0;
+    text-align: center;
+  }
+
+  .compact-list li {
+    margin-bottom: var(--space-1);
+    line-height: 1.5;
+  }
+
+  .photo-row {
+    display: flex;
+    gap: var(--space-2);
+    align-items: flex-start;
+  }
+
+  .photo-row figure {
+    flex: 1;
+    min-width: 0;
+  }
+
+  @media (max-width: 600px) {
+    .photo-row {
+      flex-direction: column;
+    }
+  }
+
+  .post__content figure img {
+    display: block;
+    margin: 0 auto var(--space-1);
+  }
+
+  figcaption {
+    font-size: 1.1rem;
+    color: var(--color-text-muted, #666);
+    font-style: italic;
+  }
+</style>
