@@ -1,18 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-
-// Get all published posts, sorted by date
-const allPosts = await getCollection('posts', ({ data }) => data.published !== false);
-const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+import { getWritingPosts, getPostType } from '../utils/posts';
 
 // Featured posts - pick a few recent ones with good excerpts
-const featuredPosts = sortedPosts.slice(0, 10);
-
-// Helper to check if a post is a poem
-function isPoem(post: typeof allPosts[0]) {
-  return post.data.categories?.includes('Poems') || post.data.tags?.includes('poem');
-}
+const featuredPosts = (await getWritingPosts()).slice(0, 10);
 ---
 
 <BaseLayout title="Alex Wilson" description="Alex Wilson's homepage">
@@ -22,14 +13,14 @@ function isPoem(post: typeof allPosts[0]) {
 
     <div class="posts">
       {featuredPosts.map((post) => {
-        const poem = isPoem(post);
+        const postType = getPostType(post);
         return (
-          <a href={`/writing/${post.id}/`} class:list={['post-entry', { 'post-entry--poem': poem }]}>
+          <a href={`/writing/${post.id}/`} class:list={['post-entry', { 'post-entry--poem': postType === 'poem' }]}>
             <div class="post-entry__bar"></div>
             <div class="post-entry__header">
               <h3 class="post-entry__title">{post.data.title}</h3>
-              <span class:list={['tag', { 'tag--poem': poem }]}>
-                {poem ? 'poem' : 'essay'}
+              <span class:list={['tag', `tag--${postType}`]}>
+                {postType}
               </span>
             </div>
             {post.data.excerpt && (

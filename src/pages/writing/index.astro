@@ -1,25 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
 import { formatDate } from '../../utils/formatDate';
+import { getWritingPosts, getPostType } from '../../utils/posts';
 
-// Get all published posts, sorted by date
-const allPosts = await getCollection('posts', ({ data }) => data.published !== false);
-const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-// Helper to get post type
-function getPostType(post: typeof allPosts[0]): 'poem' | 'newsletter' | 'research' | 'essay' {
-  if (post.data.categories?.includes('Poems') || post.data.tags?.includes('poem')) {
-    return 'poem';
-  }
-  if (post.data.tags?.includes('decibel') || post.data.categories?.includes('Newsletter')) {
-    return 'newsletter';
-  }
-  if (post.data.tags?.includes('research')) {
-    return 'research';
-  }
-  return 'essay';
-}
+const sortedPosts = await getWritingPosts();
 ---
 
 <BaseLayout title="Writing | Alex Wilson" description="Assorted pieces of writing.">
