@@ -1,5 +1,5 @@
 ---
-title: "The Two Year Rule"
+title: "On the Two Year Rule"
 date_created: 2021-03-31
 date: 2021-03-31 # date_modified
 # type: posts
