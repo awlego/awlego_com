@@ -1,5 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Personality test posts, newest first
+const personalityPosts = (await getCollection('posts', ({ data }) =>
+  data.published !== false && data.categories?.includes('About Me') && data.tags?.includes('personality')
+)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <BaseLayout title="About | Alex Wilson" description="Alex Wilson writes about the things he's trying to understand.">
@@ -62,7 +68,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p>
     I believe the meaning of life is to love and to be loved.
     </p>
+
+    <h2>Personality</h2>
+    <p>
+    I'm interested in tracking my personality test scores over time.
+    </p>
+    <ul>
+      {personalityPosts.map((post) => (
+        <li><a href={`/writing/${post.id}/`}>{post.data.title}</a></li>
+      ))}
     </ul>
+
+    <h2>Resume</h2>
+    <p>
+    You can find my resume <a href="/writing/2024-10-01-resume/">here</a>.
+    </p>
 
     <h2>Elsewhere</h2>
 
