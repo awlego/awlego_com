@@ -8,6 +8,8 @@ export default defineConfig({
   output: 'static',
   redirects: {
     '/posts': '/writing',
+    '/writing/2024-10-01-resume': '/resume',
+    '/chess-knowledge-visualization': '/writing/2024-10-09-lc0',
   },
   build: {
     format: 'directory',

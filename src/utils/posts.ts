@@ -5,7 +5,7 @@ export type PostType = 'poem' | 'newsletter' | 'research' | 'essay';
 
 /**
  * Published posts for the writing listings, newest first.
- * "About Me" posts (personality tests, resume) live on the About page instead.
+ * "About Me" posts (personality tests) live on the About page instead.
  */
 export async function getWritingPosts(): Promise<Post[]> {
   const posts = await getCollection('posts', ({ data }) => data.published !== false && !data.categories?.includes('About Me'));
